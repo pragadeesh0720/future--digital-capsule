@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - Digital Time Capsule
+{% endblock %}
+
+
+{% block content %}
+
+<div class="hero">
+
+    <h1>🔐 Digital Time Capsule</h1>
+
+    <p>
+        Write something today.
+        Let your future self discover it later.
+    </p>
+
+    <a
+        href="/create"
+        class="button"
+    >
+        + Create Capsule
+    </a>
+
+</div>
+
+
+<h2>Your Capsules</h2>
+
+
+{% if capsules %}
+
+<div class="capsule-grid">
+
+    {% for capsule in capsules %}
+
+    <div class="capsule-card">
+
+        <div class="lock-icon">
+
+            {% if capsule["unlock_time"] <=
+                  now_string %}
+                🔓
+            {% else %}
+                🔒
+            {% endif %}
+
+        </div>
+
+
+        <h3>
+            {{ capsule["title"] }}
+        </h3>
+
+
+        <p>
+
+            Unlocks:
+
+            <strong>
+                {{ capsule["unlock_time"] }}
+            </strong>
+
+        </p>
+
+
+        <a
+            href="/capsule/{{ capsule['id'] }}"
+            class="button"
+        >
+            View Capsule
+        </a>
+
+
+        <form
+            action="/capsule/{{ capsule['id'] }}/delete"
+            method="POST"
+        >
+
+            <button
+                type="submit"
+                class="delete-button"
+                onclick="return confirm(
+                    'Delete this capsule?'
+                )"
+            >
+                Delete
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+{% else %}
+
+<div class="empty">
+
+    <h2>No capsules yet 📭</h2>
+
+    <p>
+        Create your first message to your future self.
+    </p>
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}

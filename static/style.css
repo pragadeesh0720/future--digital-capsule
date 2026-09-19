@@ -1,0 +1,886 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    background:
+        #f2f2f7;
+
+    color:
+        #1c1c1e;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 7%;
+
+    background:
+        rgba(255, 255, 255, 0.82);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+nav a {
+    color: #1c1c1e;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* ---------- MAIN ---------- */
+
+main {
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding-bottom: 80px;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    text-align: center;
+
+    padding:
+        90px 20px 70px;
+}
+
+
+.hero h1 {
+    font-size: clamp(38px, 7vw, 64px);
+
+    font-weight: 700;
+
+    letter-spacing: -2.5px;
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+}
+
+
+.hero p {
+    max-width: 580px;
+
+    margin: 0 auto 32px;
+
+    color: #6e6e73;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+    letter-spacing: -0.2px;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding:
+        0 22px;
+
+    border-radius: 14px;
+
+    background:
+        #007aff;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.2px;
+
+    box-shadow:
+        0 5px 14px rgba(0, 122, 255, 0.22);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.button:hover {
+    background: #006ee6;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 122, 255, 0.25);
+}
+
+
+.button:active {
+    transform:
+        scale(0.97);
+}
+
+
+/* ---------- SECTION TITLE ---------- */
+
+h2 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.8px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ---------- CAPSULE GRID ---------- */
+
+.capsule-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 18px;
+
+    margin-bottom: 50px;
+}
+
+
+/* ---------- CAPSULE CARD ---------- */
+
+.capsule-card {
+    position: relative;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.86);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.05);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.capsule-card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.10);
+}
+
+
+.lock-icon {
+    width: 54px;
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 16px;
+
+    background:
+        #f2f2f7;
+
+    font-size: 25px;
+}
+
+
+.capsule-card h3 {
+    font-size: 21px;
+
+    font-weight: 650;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 9px;
+}
+
+
+.capsule-card p {
+    color: #6e6e73;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* ---------- DELETE BUTTON ---------- */
+
+.capsule-card form {
+    margin-top: 10px;
+}
+
+
+.delete-button {
+    background:
+        transparent;
+
+    color:
+        #ff3b30;
+
+    border:
+        none;
+
+    padding:
+        8px 0;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.delete-button:hover {
+    opacity: 0.65;
+}
+
+
+/* ---------- CREATE FORM ---------- */
+
+.form-container {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin:
+        70px auto 0;
+}
+
+
+.form-container h1 {
+    font-size: 38px;
+
+    letter-spacing: -1.4px;
+
+    margin-bottom: 10px;
+}
+
+
+.form-container > p {
+    color: #6e6e73;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    margin-bottom: 35px;
+}
+
+
+form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+label {
+    margin-top: 14px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #3a3a3c;
+}
+
+
+input,
+textarea {
+    width: 100%;
+
+    padding:
+        14px 16px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid #d1d1d6;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    color:
+        #1c1c1e;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+input:focus,
+textarea:focus {
+    border-color:
+        #007aff;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 122, 255, 0.12);
+}
+
+
+textarea {
+    min-height: 220px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+input[type="datetime-local"] {
+    color:
+        #1c1c1e;
+
+    cursor: pointer;
+}
+
+
+small {
+    color:
+        #8e8e93;
+
+    font-size: 13px;
+
+    margin-top: 2px;
+}
+
+
+/* ---------- FORM BUTTON ---------- */
+
+.form-container form .button {
+    margin-top: 24px;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    border-radius: 15px;
+
+    font-size: 17px;
+}
+
+
+/* ---------- CAPSULE VIEW ---------- */
+
+.capsule-view {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin:
+        80px auto;
+
+    text-align: center;
+}
+
+
+.capsule-view > h1 {
+    font-size: 38px;
+
+    letter-spacing: -1.5px;
+
+    line-height: 1.1;
+}
+
+
+/* ---------- LOCKED / UNLOCKED CARD ---------- */
+
+.locked,
+.unlocked {
+    margin-top: 30px;
+
+    padding:
+        55px 35px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.05);
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+.big-icon {
+    width: 82px;
+
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin:
+        0 auto 24px;
+
+    border-radius: 24px;
+
+    background:
+        #f2f2f7;
+
+    font-size: 40px;
+}
+
+
+.locked h2,
+.unlocked h2 {
+    font-size: 27px;
+
+    letter-spacing: -0.7px;
+
+    margin-bottom: 12px;
+}
+
+
+.locked p {
+    color: #6e6e73;
+
+    line-height: 1.5;
+}
+
+
+.locked h3 {
+    margin:
+        14px 0;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #007aff;
+}
+
+
+/* ---------- COUNTDOWN ---------- */
+
+.countdown {
+    display: inline-block;
+
+    margin:
+        22px 0;
+
+    padding:
+        14px 20px;
+
+    border-radius: 15px;
+
+    background:
+        #f2f2f7;
+
+    color:
+        #1c1c1e;
+
+    font-size: 24px;
+
+    font-weight: 650;
+
+    letter-spacing: -0.6px;
+
+    font-variant-numeric:
+        tabular-nums;
+}
+
+
+/* ---------- SECRET MESSAGE ---------- */
+
+.secret-message {
+    margin:
+        25px 0;
+
+    padding:
+        25px;
+
+    border-radius: 18px;
+
+    background:
+        #f2f2f7;
+
+    border:
+        1px solid #e5e5ea;
+
+    color:
+        #1c1c1e;
+
+    text-align: left;
+
+    white-space: pre-wrap;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+}
+
+
+/* ---------- PASSWORD FORM ---------- */
+
+.unlocked form {
+    max-width: 430px;
+
+    margin:
+        25px auto 0;
+
+    text-align: left;
+}
+
+
+.unlocked form .button {
+    width: 100%;
+
+    margin-top: 12px;
+}
+
+
+/* ---------- ERROR ---------- */
+
+.error {
+    margin:
+        20px 0;
+
+    padding:
+        14px 16px;
+
+    border-radius: 13px;
+
+    background:
+        #fff2f2;
+
+    color:
+        #d70015;
+
+    border:
+        1px solid #ffd6d6;
+
+    font-size: 14px;
+}
+
+
+.flash {
+    margin:
+        20px auto;
+
+    padding:
+        13px 16px;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+
+    max-width: 650px;
+}
+
+
+.flash.error {
+    background:
+        #fff2f2;
+
+    color:
+        #d70015;
+}
+
+
+.flash.success {
+    background:
+        #edfff5;
+
+    color:
+        #16803c;
+}
+
+
+/* ---------- EMPTY STATE ---------- */
+
+.empty {
+    padding:
+        80px 20px;
+
+    text-align: center;
+}
+
+
+.empty h2 {
+    margin-bottom: 10px;
+}
+
+
+.empty p {
+    color:
+        #8e8e93;
+}
+
+
+/* ---------- ERROR PAGE ---------- */
+
+.error-page {
+    text-align: center;
+
+    padding:
+        120px 20px;
+}
+
+
+.error-page h1 {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+
+.error-page p {
+    color:
+        #6e6e73;
+
+    margin-bottom: 25px;
+}
+
+
+/* ---------- BACK BUTTON ---------- */
+
+.back {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color:
+        #007aff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+.back:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding:
+            0 20px;
+    }
+
+
+    main {
+        width:
+            calc(100% - 30px);
+    }
+
+
+    .hero {
+        padding:
+            65px 10px 50px;
+    }
+
+
+    .hero h1 {
+        font-size: 40px;
+
+        letter-spacing: -1.8px;
+    }
+
+
+    .hero p {
+        font-size: 17px;
+    }
+
+
+    h2 {
+        font-size: 24px;
+    }
+
+
+    .capsule-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .form-container {
+        margin-top:
+            45px;
+    }
+
+
+    .form-container h1 {
+        font-size:
+            32px;
+    }
+
+
+    .capsule-view {
+        margin-top:
+            50px;
+    }
+
+
+    .capsule-view > h1 {
+        font-size:
+            30px;
+    }
+
+
+    .locked,
+    .unlocked {
+        padding:
+            40px 20px;
+
+        border-radius:
+            22px;
+    }
+
+
+    .countdown {
+        font-size:
+            19px;
+
+        padding:
+            12px 15px;
+    }
+
+
+    .secret-message {
+        padding:
+            20px;
+
+        font-size:
+            15px;
+    }
+
+}
+
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+    }
+
+}
+

@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ capsule["title"] }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="capsule-view">
+
+
+    <h1>
+        {{ capsule["title"] }}
+    </h1>
+
+
+    {% if not unlocked %}
+
+        <div class="locked">
+
+            <div class="big-icon">
+                🔒
+            </div>
+
+            <h2>
+                Capsule Locked
+            </h2>
+
+            <p>
+                This capsule will unlock on:
+            </p>
+
+            <h3>
+                {{ capsule["unlock_time"] }}
+            </h3>
+
+
+            <div
+                id="countdown"
+                class="countdown"
+                data-remaining="{{ remaining }}"
+            >
+                Loading...
+            </div>
+
+
+            <p>
+                Come back when the timer reaches zero.
+            </p>
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="unlocked">
+
+            <div class="big-icon">
+                🔓
+            </div>
+
+            <h2>
+                Capsule Unlocked
+            </h2>
+
+
+            {% if message %}
+
+                <div class="secret-message">
+
+                    {{ message }}
+
+                </div>
+
+                <p>
+                    🔐 Successfully decrypted.
+                </p>
+
+
+            {% else %}
+
+                {% if error %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endif %}
+
+
+                {% if not password_locked %}
+
+                    <form method="POST">
+
+                        <label>
+                            Enter Capsule Password
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            required
+                            autofocus
+                        >
+
+                        <button
+                            type="submit"
+                            class="button"
+                        >
+                            🔓 Unlock Message
+                        </button>
+
+                    </form>
+
+                {% else %}
+
+                    <p>
+                        🔒 Too many incorrect attempts.
+                        Please wait before trying again.
+                    </p>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    {% endif %}
+
+
+    <a
+        href="/"
+        class="back"
+    >
+        ← Back to Capsules
+    </a>
+
+</div>
+
+
+<script>
+
+const countdown =
+    document.getElementById(
+        "countdown"
+    );
+
+
+if (countdown) {
+
+    let remaining =
+        parseInt(
+            countdown.dataset.remaining
+        );
+
+
+    function updateCountdown() {
+
+        if (remaining <= 0) {
+
+            countdown.innerText =
+                "🔓 Unlocking...";
+
+            setTimeout(
+                () => location.reload(),
+                1000
+            );
+
+            return;
+        }
+
+
+        const days =
+            Math.floor(
+                remaining / 86400
+            );
+
+        const hours =
+            Math.floor(
+                (remaining % 86400) / 3600
+            );
+
+        const minutes =
+            Math.floor(
+                (remaining % 3600) / 60
+            );
+
+        const seconds =
+            remaining % 60;
+
+
+        countdown.innerText =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+
+        remaining--;
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+}
+
+</script>
+
+
+{% endblock %}

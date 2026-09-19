@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Capsule
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>🔒 Create Time Capsule</h1>
+
+    <p>
+        Once sealed, your message stays encrypted
+        until the unlock time.
+    </p>
+
+
+    <form
+        method="POST"
+        onsubmit="return validateForm()"
+    >
+
+
+        <label>
+            Capsule Title
+        </label>
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Message to future me"
+            required
+        >
+
+
+        <label>
+            Secret Message
+        </label>
+
+        <textarea
+            name="message"
+            placeholder="Dear future me..."
+            required
+        ></textarea>
+
+
+        <label>
+            Unlock Date & Time
+        </label>
+
+        <input
+            type="datetime-local"
+            name="unlock_time"
+            id="unlock_time"
+            required
+        >
+
+        <small>
+            You can specify the exact minute.
+        </small>
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="At least 6 characters"
+            required
+        >
+
+
+        <label>
+            Confirm Password
+        </label>
+
+        <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="button"
+        >
+            🔐 Seal Capsule
+        </button>
+
+    </form>
+
+</div>
+
+
+<script>
+
+function validateForm() {
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+    const confirmPassword =
+        document.getElementById(
+            "confirm_password"
+        ).value;
+
+
+    if (password !== confirmPassword) {
+
+        alert(
+            "Passwords do not match."
+        );
+
+        return false;
+    }
+
+
+    return true;
+}
+
+</script>
+
+
+{% endblock %}
